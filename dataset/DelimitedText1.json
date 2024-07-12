@@ -1,0 +1,49 @@
+{
+	"name": "DelimitedText1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ADLS_Yemima",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Ratings.csv",
+				"folderPath": "SQL/DataSource",
+				"fileSystem": "development"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "PrimaryGenre",
+				"type": "String"
+			},
+			{
+				"name": "year",
+				"type": "String"
+			},
+			{
+				"name": "AverageRating",
+				"type": "String"
+			},
+			{
+				"name": "HighestRated",
+				"type": "String"
+			},
+			{
+				"name": "LowestRated",
+				"type": "String"
+			},
+			{
+				"name": "NumberOfMovies",
+				"type": "String"
+			}
+		]
+	}
+}

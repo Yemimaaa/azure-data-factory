@@ -15,8 +15,30 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
 					"enableStaging": false
-				}
+				},
+				"outputs": [
+					{
+						"referenceName": "CSV_ADLS_Yemima",
+						"type": "DatasetReference",
+						"parameters": {
+							"container_name": "development",
+							"delimiter_name": ";",
+							"row_as_headers": true
+						}
+					}
+				]
 			}
 		],
 		"folder": {
