@@ -53,6 +53,8 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"container_name": "development",
+							"folder_name": "SQL/DataSource",
+							"file_name": "CustomerOrders.csv",
 							"delimiter_name": ";",
 							"row_as_headers": true
 						}
@@ -64,6 +66,8 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"container_name": "development",
+							"folder_name": "SQL/DataSource",
+							"file_name": "CustomerOrders.csv",
 							"delimiter_name": ";",
 							"row_as_headers": true
 						}
