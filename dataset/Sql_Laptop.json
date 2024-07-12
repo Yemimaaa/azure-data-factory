@@ -1,0 +1,15 @@
+{
+	"name": "Sql_Laptop",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Sql_Laptop",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Database"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": []
+	}
+}
