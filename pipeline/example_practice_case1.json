@@ -76,7 +76,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "DelimitedText1",
+						"referenceName": "CSV_ADLS_yemima_movieADLS",
 						"type": "DatasetReference"
 					}
 				],
