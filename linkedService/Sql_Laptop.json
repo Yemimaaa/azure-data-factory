@@ -1,0 +1,21 @@
+{
+	"name": "Sql_Laptop",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"server": "LAPTOP-M8RFAIAM",
+			"database": "AdventureWorks2022",
+			"encrypt": "mandatory",
+			"trustServerCertificate": true,
+			"authenticationType": "SQL",
+			"userName": "mimaa",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJmOGY4MGI1Ni1kZTBjLTRlNTYtOGEwMC05N2IzNzc4N2ZhZWEiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "localyemi",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
