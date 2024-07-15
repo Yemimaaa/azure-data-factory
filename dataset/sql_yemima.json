@@ -18,67 +18,7 @@
 		},
 		"annotations": [],
 		"type": "SqlServerTable",
-		"schema": [
-			{
-				"name": "CustomerKey",
-				"type": "int",
-				"precision": 10
-			},
-			{
-				"name": "FirstName",
-				"type": "varchar"
-			},
-			{
-				"name": "LastName",
-				"type": "varchar"
-			},
-			{
-				"name": "MaritalStatus",
-				"type": "char"
-			},
-			{
-				"name": "Gender",
-				"type": "char"
-			},
-			{
-				"name": "YearlyIncome",
-				"type": "varchar"
-			},
-			{
-				"name": "Education",
-				"type": "varchar"
-			},
-			{
-				"name": "Occupation",
-				"type": "varchar"
-			},
-			{
-				"name": "City",
-				"type": "varchar"
-			},
-			{
-				"name": "StateProvince",
-				"type": "varchar"
-			},
-			{
-				"name": "Country",
-				"type": "varchar"
-			},
-			{
-				"name": "NumberOfOrders",
-				"type": "int",
-				"precision": 10
-			},
-			{
-				"name": "TotalQuantity",
-				"type": "int",
-				"precision": 10
-			},
-			{
-				"name": "TotalAmount",
-				"type": "varchar"
-			}
-		],
+		"schema": [],
 		"typeProperties": {
 			"schema": {
 				"value": "@dataset().schema",
