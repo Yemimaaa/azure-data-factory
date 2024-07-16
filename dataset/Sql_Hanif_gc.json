@@ -1,0 +1,24 @@
+{
+	"name": "Sql_Hanif_gc",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Sql_GCloud_Yemima",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Task GCloud"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "image_name",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "list_image"
+		}
+	}
+}

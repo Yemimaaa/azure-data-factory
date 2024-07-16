@@ -1,0 +1,36 @@
+{
+	"name": "Binary_GCloud",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GCloud_Yemima",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"folder_name": {
+				"type": "string"
+			},
+			"file_name": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "Task GCloud"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "GoogleCloudStorageLocation",
+				"bucketName": "azure_data_engineer",
+				"folderPath": {
+					"value": "@dataset().folder_name",
+					"type": "Expression"
+				},
+				"fileName": {
+					"value": "@dataset().file_name",
+					"type": "Expression"
+				}
+			}
+		}
+	}
+}
