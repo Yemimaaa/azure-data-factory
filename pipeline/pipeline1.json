@@ -298,12 +298,20 @@
 				"typeProperties": {
 					"source": {
 						"type": "SqlServerSource",
+						"sqlReaderStoredProcedureName": "[dbo].[CustomerLoanSummary]",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
 					"sink": {
 						"type": "SqlServerSink",
-						"sqlWriterStoredProcedureName": "[dbo].[CustomerLoanSummary]"
+						"writeBehavior": "upsert",
+						"upsertSettings": {
+							"useTempDB": true,
+							"keys": [
+								"customer_no"
+							]
+						},
+						"sqlWriterUseTableLock": true
 					},
 					"enableStaging": false,
 					"translator": {
@@ -331,7 +339,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"schema": "dbo",
-							"table_name": "Loan_Modeling"
+							"table_name": "CustomerLoanData"
 						}
 					}
 				]
