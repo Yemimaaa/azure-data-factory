@@ -202,6 +202,8 @@
 			{
 				"name": "fact_customer_rfm",
 				"type": "Copy",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Orders",
@@ -466,7 +468,7 @@
 			}
 		],
 		"folder": {
-			"name": "day 4"
+			"name": "practice_case/day 4"
 		},
 		"annotations": []
 	}

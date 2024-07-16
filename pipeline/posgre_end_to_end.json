@@ -1,5 +1,5 @@
 {
-	"name": "pipeline1",
+	"name": "posgre_end_to_end",
 	"properties": {
 		"activities": [
 			{
@@ -23,7 +23,15 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "PostgreSqlV2Source"
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
 					},
 					"sink": {
 						"type": "SqlServerSink",
@@ -48,10 +56,14 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Postgre_Loan",
+						"referenceName": "CSV_ADLS_Yemima",
 						"type": "DatasetReference",
 						"parameters": {
-							"table_name": "application"
+							"container_name": "development",
+							"folder_name": "data_loan",
+							"file_name": "applications",
+							"delimiter_name": ";",
+							"row_as_headers": true
 						}
 					}
 				],
@@ -87,7 +99,15 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "PostgreSqlV2Source"
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
 					},
 					"sink": {
 						"type": "SqlServerSink",
@@ -112,10 +132,14 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Postgre_Loan",
+						"referenceName": "CSV_ADLS_Yemima",
 						"type": "DatasetReference",
 						"parameters": {
-							"table_name": "bureau"
+							"container_name": "development",
+							"folder_name": "data_loan",
+							"file_name": "bureau",
+							"delimiter_name": ";",
+							"row_as_headers": true
 						}
 					}
 				],
@@ -151,7 +175,15 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "PostgreSqlV2Source"
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
 					},
 					"sink": {
 						"type": "SqlServerSink",
@@ -176,10 +208,14 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Postgre_Loan",
+						"referenceName": "CSV_ADLS_Yemima",
 						"type": "DatasetReference",
 						"parameters": {
-							"table_name": "previous_application"
+							"container_name": "development",
+							"folder_name": "data_loan",
+							"file_name": "previous_application",
+							"delimiter_name": ";",
+							"row_as_headers": true
 						}
 					}
 				],
@@ -215,7 +251,15 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "PostgreSqlV2Source"
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
 					},
 					"sink": {
 						"type": "SqlServerSink",
@@ -240,10 +284,14 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Postgre_Loan",
+						"referenceName": "CSV_ADLS_Yemima",
 						"type": "DatasetReference",
 						"parameters": {
-							"table_name": "installment"
+							"container_name": "development",
+							"folder_name": "data_loan",
+							"file_name": "installment",
+							"delimiter_name": ";",
+							"row_as_headers": true
 						}
 					}
 				],
@@ -347,8 +395,6 @@
 			{
 				"name": "ADLS_application",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -409,8 +455,6 @@
 			{
 				"name": "ADLS_bureau",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -471,8 +515,6 @@
 			{
 				"name": "ADLS_previous_application",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -533,8 +575,6 @@
 			{
 				"name": "ADLS_installment",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
