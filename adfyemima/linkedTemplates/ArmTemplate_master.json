@@ -11,25 +11,113 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'ADLS_Yemima'"
 		},
-		"Sql_Yemima_password": {
+		"ADLS_yemimas_accountKey": {
 			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'Sql_Yemima'"
+			"metadata": "Secure string for 'accountKey' of 'ADLS_yemimas'"
+		},
+		"GCloud_Yemima_secretAccessKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'secretAccessKey' of 'GCloud_Yemima'"
+		},
+		"MySQL_Day5_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'MySQL_Day5'"
+		},
+		"PG_Task_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'PG_Task'"
+		},
+		"Sql_GCloud_Yemima_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'Sql_GCloud_Yemima'"
+		},
+		"Sql_Laptop_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'Sql_Laptop'"
+		},
+		"Sql_Yemima_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'Sql_Yemima'"
+		},
+		"Sql_hanif_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'Sql_hanif'"
 		},
 		"ADLS_Yemima_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://storageaccountyemima.dfs.core.windows.net/"
 		},
-		"Sql_Yemima_properties_typeProperties_server": {
+		"ADLS_yemimas_properties_typeProperties_url": {
 			"type": "string",
-			"defaultValue": "yemima.database.windows.net"
+			"defaultValue": "https://hanifstorageaccount.dfs.core.windows.net/"
 		},
-		"Sql_Yemima_properties_typeProperties_database": {
+		"GCloud_Yemima_properties_typeProperties_accessKeyId": {
+			"type": "string",
+			"defaultValue": "GOOGJUP6CZDUHBLCN3JUECIC"
+		},
+		"HTTP_solliancepublicdata_Customer_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://solliancepublicdata.blob.core.windows.net/dataengineering/dp-203/awdata/CustomerSource.csv"
+		},
+		"MySQL_Day5_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "34.34.222.232"
+		},
+		"MySQL_Day5_properties_typeProperties_database": {
 			"type": "string",
 			"defaultValue": "data"
 		},
-		"Sql_Yemima_properties_typeProperties_userName": {
+		"MySQL_Day5_properties_typeProperties_username": {
 			"type": "string",
-			"defaultValue": "yemima"
+			"defaultValue": "admin"
+		},
+		"PG_Task_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "34.31.255.191"
+		},
+		"PG_Task_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "postgres"
+		},
+		"PG_Task_properties_typeProperties_username": {
+			"type": "string",
+			"defaultValue": "postgres"
+		},
+		"Sql_GCloud_Yemima_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "hanifajari.database.windows.net"
+		},
+		"Sql_GCloud_Yemima_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "data"
+		},
+		"Sql_GCloud_Yemima_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "admin_sa"
+		},
+		"Sql_Laptop_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "LAPTOP-M8RFAIAM"
+		},
+		"Sql_Laptop_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "AdventureWorks2022"
+		},
+		"Sql_Laptop_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "mimaa"
+		},
+		"Sql_hanif_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "mhaniffajari.database.windows.net"
+		},
+		"Sql_hanif_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "data"
+		},
+		"Sql_hanif_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "admin_sa"
 		},
 		"containerUri": {
 			"type": "string",
@@ -61,24 +149,110 @@
 					"ADLS_Yemima_accountKey": {
 						"value": "[parameters('ADLS_Yemima_accountKey')]"
 					},
-					"Sql_Yemima_password": {
-						"value": "[parameters('Sql_Yemima_password')]"
+					"ADLS_yemimas_accountKey": {
+						"value": "[parameters('ADLS_yemimas_accountKey')]"
+					},
+					"GCloud_Yemima_secretAccessKey": {
+						"value": "[parameters('GCloud_Yemima_secretAccessKey')]"
+					},
+					"MySQL_Day5_password": {
+						"value": "[parameters('MySQL_Day5_password')]"
+					},
+					"PG_Task_password": {
+						"value": "[parameters('PG_Task_password')]"
+					},
+					"Sql_GCloud_Yemima_password": {
+						"value": "[parameters('Sql_GCloud_Yemima_password')]"
+					},
+					"Sql_hanif_password": {
+						"value": "[parameters('Sql_hanif_password')]"
 					},
 					"ADLS_Yemima_properties_typeProperties_url": {
 						"value": "[parameters('ADLS_Yemima_properties_typeProperties_url')]"
 					},
-					"Sql_Yemima_properties_typeProperties_server": {
-						"value": "[parameters('Sql_Yemima_properties_typeProperties_server')]"
+					"ADLS_yemimas_properties_typeProperties_url": {
+						"value": "[parameters('ADLS_yemimas_properties_typeProperties_url')]"
 					},
-					"Sql_Yemima_properties_typeProperties_database": {
-						"value": "[parameters('Sql_Yemima_properties_typeProperties_database')]"
+					"GCloud_Yemima_properties_typeProperties_accessKeyId": {
+						"value": "[parameters('GCloud_Yemima_properties_typeProperties_accessKeyId')]"
 					},
-					"Sql_Yemima_properties_typeProperties_userName": {
-						"value": "[parameters('Sql_Yemima_properties_typeProperties_userName')]"
+					"HTTP_solliancepublicdata_Customer_properties_typeProperties_url": {
+						"value": "[parameters('HTTP_solliancepublicdata_Customer_properties_typeProperties_url')]"
+					},
+					"MySQL_Day5_properties_typeProperties_server": {
+						"value": "[parameters('MySQL_Day5_properties_typeProperties_server')]"
+					},
+					"MySQL_Day5_properties_typeProperties_database": {
+						"value": "[parameters('MySQL_Day5_properties_typeProperties_database')]"
+					},
+					"MySQL_Day5_properties_typeProperties_username": {
+						"value": "[parameters('MySQL_Day5_properties_typeProperties_username')]"
+					},
+					"PG_Task_properties_typeProperties_server": {
+						"value": "[parameters('PG_Task_properties_typeProperties_server')]"
+					},
+					"PG_Task_properties_typeProperties_database": {
+						"value": "[parameters('PG_Task_properties_typeProperties_database')]"
+					},
+					"PG_Task_properties_typeProperties_username": {
+						"value": "[parameters('PG_Task_properties_typeProperties_username')]"
+					},
+					"Sql_GCloud_Yemima_properties_typeProperties_server": {
+						"value": "[parameters('Sql_GCloud_Yemima_properties_typeProperties_server')]"
+					},
+					"Sql_GCloud_Yemima_properties_typeProperties_database": {
+						"value": "[parameters('Sql_GCloud_Yemima_properties_typeProperties_database')]"
+					},
+					"Sql_GCloud_Yemima_properties_typeProperties_userName": {
+						"value": "[parameters('Sql_GCloud_Yemima_properties_typeProperties_userName')]"
+					},
+					"Sql_hanif_properties_typeProperties_server": {
+						"value": "[parameters('Sql_hanif_properties_typeProperties_server')]"
+					},
+					"Sql_hanif_properties_typeProperties_database": {
+						"value": "[parameters('Sql_hanif_properties_typeProperties_database')]"
+					},
+					"Sql_hanif_properties_typeProperties_userName": {
+						"value": "[parameters('Sql_hanif_properties_typeProperties_userName')]"
 					}
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "adfyemima_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"Sql_Laptop_password": {
+						"value": "[parameters('Sql_Laptop_password')]"
+					},
+					"Sql_Yemima_connectionString": {
+						"value": "[parameters('Sql_Yemima_connectionString')]"
+					},
+					"Sql_Laptop_properties_typeProperties_server": {
+						"value": "[parameters('Sql_Laptop_properties_typeProperties_server')]"
+					},
+					"Sql_Laptop_properties_typeProperties_database": {
+						"value": "[parameters('Sql_Laptop_properties_typeProperties_database')]"
+					},
+					"Sql_Laptop_properties_typeProperties_userName": {
+						"value": "[parameters('Sql_Laptop_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adfyemima_ArmTemplate_0')]"
+			]
 		}
 	]
 }
