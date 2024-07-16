@@ -259,7 +259,7 @@
 				]
 			},
 			{
-				"name": "Copy data1",
+				"name": "FactTable",
 				"type": "Copy",
 				"dependsOn": [
 					{
@@ -298,20 +298,12 @@
 				"typeProperties": {
 					"source": {
 						"type": "SqlServerSource",
-						"sqlReaderQuery": "exec GetCustomerLoanSummary",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
 					"sink": {
 						"type": "SqlServerSink",
-						"writeBehavior": "upsert",
-						"upsertSettings": {
-							"useTempDB": true,
-							"keys": [
-								"customer_no"
-							]
-						},
-						"sqlWriterUseTableLock": false
+						"sqlWriterStoredProcedureName": "[dbo].[CustomerLoanSummary]"
 					},
 					"enableStaging": false,
 					"translator": {
@@ -339,7 +331,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"schema": "dbo",
-							"table_name": "CustomerLoanData"
+							"table_name": "Loan_Modeling"
 						}
 					}
 				]
@@ -347,6 +339,8 @@
 			{
 				"name": "ADLS_application",
 				"type": "Copy",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -407,6 +401,8 @@
 			{
 				"name": "ADLS_bureau",
 				"type": "Copy",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -467,6 +463,8 @@
 			{
 				"name": "ADLS_previous_application",
 				"type": "Copy",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -527,6 +525,8 @@
 			{
 				"name": "ADLS_installment",
 				"type": "Copy",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
