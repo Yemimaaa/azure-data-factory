@@ -1,5 +1,5 @@
 {
-	"name": "pipeline1",
+	"name": "end_to_end_pipeline_adls",
 	"properties": {
 		"activities": [
 			{
@@ -458,7 +458,7 @@
 			}
 		],
 		"folder": {
-			"name": "day 5"
+			"name": "day 4"
 		},
 		"annotations": []
 	}
