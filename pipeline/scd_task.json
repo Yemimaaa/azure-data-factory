@@ -1,0 +1,239 @@
+{
+	"name": "scd_task",
+	"properties": {
+		"activities": [
+			{
+				"name": "SCD type 1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "with emp AS ( SELECT EmployeeID,\n\t\t\t\t\t   MAX(StartDate) AS MaxStartDate\n\t\t\t\tFROM Employee  e\n\t\t\t\tGROUP BY EmployeeID)\n\tselect e.EmployeeID, e.Name, e.Position, em.MaxStartDate AS StartDate, e.EndDate\n\tfrom dbo.Employee e\n\tjoin emp em  on em.EmployeeID = e.EmployeeID and e.StartDate = em.MaxStartDate\n\torder by e.EmployeeID;",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"writeBehavior": "upsert",
+						"upsertSettings": {
+							"useTempDB": true,
+							"keys": [
+								"EmployeeID"
+							]
+						},
+						"sqlWriterUseTableLock": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Sql_k_hanif_scd",
+						"type": "DatasetReference",
+						"parameters": {
+							"schema": "dbo",
+							"table": "employee"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "sql_yemima",
+						"type": "DatasetReference",
+						"parameters": {
+							"schema": "dbo",
+							"table_name": "user"
+						}
+					}
+				]
+			},
+			{
+				"name": "SCD Type 2",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "select e.EmployeeLogID,\n\t   e.EmployeeID, \n\t   e.Name, \n\t   e.Position, \n\t   StartDate, \n\t   e.EndDate,\n\t   CASE \n\t\t\tWHEN StartDate >= MAX(StartDate) OVER (PARTITION BY e.EmployeeID) THEN 1\n\t\t\tELSE 0\n\t\tEND AS isLatest\nfrom dbo.Employee e",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"writeBehavior": "upsert",
+						"upsertSettings": {
+							"useTempDB": true,
+							"keys": [
+								"EmployeeLogID"
+							]
+						},
+						"sqlWriterUseTableLock": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Sql_k_hanif_scd",
+						"type": "DatasetReference",
+						"parameters": {
+							"schema": "dbo",
+							"table": "employee"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "sql_yemima",
+						"type": "DatasetReference",
+						"parameters": {
+							"schema": "dbo",
+							"table_name": "user_log"
+						}
+					}
+				]
+			},
+			{
+				"name": "SCD Type 3",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": " WITH employeePositions AS (\n    SELECT \n        EmployeeID,\n        Name,\n        Position,\n        ISNULL(LAG(Position) OVER (PARTITION BY EmployeeID ORDER BY StartDate),Position) AS PreviousPosition,\n        StartDate,\n        EndDate,\n        ROW_NUMBER() OVER (PARTITION BY EmployeeID ORDER BY StartDate DESC) AS RowNum\n    FROM dbo.employee\n)\nSELECT \n    EmployeeID,\n    Name,\n        Position,\n        PreviousPosition,\n        MIN(StartDate) AS StartDate,\n        MAX(EndDate) AS EndDate\n    FROM employeePositions\n    WHERE RowNum = 1\n    GROUP BY EmployeeID, Name, Position, PreviousPosition\n    ORDER BY EmployeeID;",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"writeBehavior": "upsert",
+						"upsertSettings": {
+							"useTempDB": true,
+							"keys": [
+								"EmployeeID"
+							]
+						},
+						"sqlWriterUseTableLock": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Sql_k_hanif_scd",
+						"type": "DatasetReference",
+						"parameters": {
+							"schema": "dbo",
+							"table": "employee"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "sql_yemima",
+						"type": "DatasetReference",
+						"parameters": {
+							"schema": "dbo",
+							"table_name": "user_historical"
+						}
+					}
+				]
+			},
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"enableStaging": false
+				}
+			},
+			{
+				"name": "Copy data1_copy1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"enableStaging": false
+				}
+			},
+			{
+				"name": "Copy data1_copy2",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"enableStaging": false
+				}
+			}
+		],
+		"annotations": []
+	}
+}
