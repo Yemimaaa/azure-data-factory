@@ -1,0 +1,24 @@
+{
+	"name": "Sql_Synapse_Celerates",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Sql_Synapse_Celerates",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"schema_name": {
+				"type": "string"
+			},
+			"table_name": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "employee"
+		}
+	}
+}
