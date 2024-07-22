@@ -1,0 +1,346 @@
+{
+	"name": "Json_ADLS_Data",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ADLS_Yemima",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"container_name": {
+				"type": "string"
+			},
+			"folder_name": {
+				"type": "string"
+			},
+			"file_name": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "Exam_Challenge"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().file_name",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().folder_name",
+					"type": "Expression"
+				},
+				"fileSystem": {
+					"value": "@dataset().container_name",
+					"type": "Expression"
+				}
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"commitInfo": {
+					"type": "object",
+					"properties": {
+						"timestamp": {
+							"type": "integer"
+						},
+						"userId": {
+							"type": "string"
+						},
+						"userName": {
+							"type": "string"
+						},
+						"operation": {
+							"type": "string"
+						},
+						"operationParameters": {
+							"type": "object",
+							"properties": {
+								"mode": {
+									"type": "string"
+								},
+								"statsOnLoad": {
+									"type": "boolean"
+								},
+								"partitionBy": {
+									"type": "string"
+								},
+								"predicate": {
+									"type": "string"
+								},
+								"matchedPredicates": {
+									"type": "string"
+								},
+								"notMatchedBySourcePredicates": {
+									"type": "string"
+								},
+								"notMatchedPredicates": {
+									"type": "string"
+								}
+							}
+						},
+						"notebook": {
+							"type": "object",
+							"properties": {
+								"notebookId": {
+									"type": "string"
+								}
+							}
+						},
+						"clusterId": {
+							"type": "string"
+						},
+						"isolationLevel": {
+							"type": "string"
+						},
+						"isBlindAppend": {
+							"type": "boolean"
+						},
+						"operationMetrics": {
+							"type": "object",
+							"properties": {
+								"numFiles": {
+									"type": "string"
+								},
+								"numOutputRows": {
+									"type": "string"
+								},
+								"numOutputBytes": {
+									"type": "string"
+								},
+								"numTargetRowsCopied": {
+									"type": "string"
+								},
+								"numTargetRowsDeleted": {
+									"type": "string"
+								},
+								"numTargetFilesAdded": {
+									"type": "string"
+								},
+								"numTargetBytesAdded": {
+									"type": "string"
+								},
+								"numTargetBytesRemoved": {
+									"type": "string"
+								},
+								"numTargetDeletionVectorsAdded": {
+									"type": "string"
+								},
+								"numTargetRowsMatchedUpdated": {
+									"type": "string"
+								},
+								"executionTimeMs": {
+									"type": "string"
+								},
+								"numTargetRowsInserted": {
+									"type": "string"
+								},
+								"numTargetRowsMatchedDeleted": {
+									"type": "string"
+								},
+								"numTargetDeletionVectorsUpdated": {
+									"type": "string"
+								},
+								"scanTimeMs": {
+									"type": "string"
+								},
+								"numTargetRowsUpdated": {
+									"type": "string"
+								},
+								"numTargetDeletionVectorsRemoved": {
+									"type": "string"
+								},
+								"numTargetRowsNotMatchedBySourceUpdated": {
+									"type": "string"
+								},
+								"numTargetChangeFilesAdded": {
+									"type": "string"
+								},
+								"numSourceRows": {
+									"type": "string"
+								},
+								"numTargetFilesRemoved": {
+									"type": "string"
+								},
+								"numTargetRowsNotMatchedBySourceDeleted": {
+									"type": "string"
+								},
+								"rewriteTimeMs": {
+									"type": "string"
+								}
+							}
+						},
+						"tags": {
+							"type": "object",
+							"properties": {
+								"noRowsCopied": {
+									"type": "string"
+								},
+								"restoresDeletedRows": {
+									"type": "string"
+								},
+								"delta.rowTracking.preserved": {
+									"type": "string"
+								}
+							}
+						},
+						"engineInfo": {
+							"type": "string"
+						},
+						"txnId": {
+							"type": "string"
+						},
+						"readVersion": {
+							"type": "integer"
+						}
+					}
+				},
+				"metaData": {
+					"type": "object",
+					"properties": {
+						"id": {
+							"type": "string"
+						},
+						"format": {
+							"type": "object",
+							"properties": {
+								"provider": {
+									"type": "string"
+								},
+								"options": {
+									"type": "object"
+								}
+							}
+						},
+						"schemaString": {
+							"type": "string"
+						},
+						"partitionColumns": {
+							"type": "array"
+						},
+						"configuration": {
+							"type": "object",
+							"properties": {
+								"delta.enableDeletionVectors": {
+									"type": "string"
+								}
+							}
+						},
+						"createdTime": {
+							"type": "integer"
+						}
+					}
+				},
+				"protocol": {
+					"type": "object",
+					"properties": {
+						"minReaderVersion": {
+							"type": "integer"
+						},
+						"minWriterVersion": {
+							"type": "integer"
+						},
+						"readerFeatures": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						"writerFeatures": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"add": {
+					"type": "object",
+					"properties": {
+						"path": {
+							"type": "string"
+						},
+						"partitionValues": {
+							"type": "object"
+						},
+						"size": {
+							"type": "integer"
+						},
+						"modificationTime": {
+							"type": "integer"
+						},
+						"dataChange": {
+							"type": "boolean"
+						},
+						"stats": {
+							"type": "string"
+						},
+						"tags": {
+							"type": "object",
+							"properties": {
+								"INSERTION_TIME": {
+									"type": "string"
+								},
+								"MIN_INSERTION_TIME": {
+									"type": "string"
+								},
+								"MAX_INSERTION_TIME": {
+									"type": "string"
+								},
+								"OPTIMIZE_TARGET_SIZE": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				},
+				"remove": {
+					"type": "object",
+					"properties": {
+						"path": {
+							"type": "string"
+						},
+						"deletionTimestamp": {
+							"type": "integer"
+						},
+						"dataChange": {
+							"type": "boolean"
+						},
+						"extendedFileMetadata": {
+							"type": "boolean"
+						},
+						"partitionValues": {
+							"type": "object"
+						},
+						"size": {
+							"type": "integer"
+						},
+						"tags": {
+							"type": "object",
+							"properties": {
+								"INSERTION_TIME": {
+									"type": "string"
+								},
+								"MIN_INSERTION_TIME": {
+									"type": "string"
+								},
+								"MAX_INSERTION_TIME": {
+									"type": "string"
+								},
+								"OPTIMIZE_TARGET_SIZE": {
+									"type": "string"
+								}
+							}
+						},
+						"stats": {
+							"type": "string"
+						}
+					}
+				}
+			}
+		}
+	}
+}
