@@ -1,0 +1,12 @@
+{
+	"name": "Http_Yemima",
+	"properties": {
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "https://d37ci6vzurychx.cloudfront.net/trip-data/",
+			"enableServerCertificateValidation": false,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
